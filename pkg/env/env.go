@@ -4,8 +4,9 @@ const (
 	Name             = "ttyd"
 	Ramdisk          = "/usr/ramdisk"
 	ExtensionHome    = Ramdisk + "/app"
-	ControlPanelHome = Ramdisk + "/admin"
 	ExtensionDir     = ExtensionHome + "/" + Name
+	ExtensionLibDir  = ExtensionDir + "/lib"
+	ControlPanelHome = Ramdisk + "/admin"
 
 	ExtensionCgiDir       = ControlPanelHome + "/cgi-bin/App/" + Name
 	ExtensionWebAssetsDir = ControlPanelHome + "/html/App/" + Name

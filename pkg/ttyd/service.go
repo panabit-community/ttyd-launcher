@@ -1,7 +1,21 @@
 package ttyd
 
-import "os/exec"
+import (
+	"os/exec"
 
-func Start() {
-	exec.Command()
+	"xie.sh.cn/panabit-ttyd/v2/pkg/env"
+)
+
+const (
+	ttyd = env.ExtensionLibDir + "/ttyd"
+)
+
+func Run() {
+	cmd := exec.Command(ttyd, "-o")
+	if err := cmd.Start(); err != nil {
+		return
+	}
+	cmd.Wait()
 }
+
+func Cleanup() {}
