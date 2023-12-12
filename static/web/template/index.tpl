@@ -1,6 +1,10 @@
+{{ define "content" }}
 <button onclick="clickHandler()">Launch ttyd</button>
 <script>
     function clickHandler() {
-        window.location = "{.WindowLocation}";
+        setTimeout(() => {
+            window.location = "{{ .WindowLocation }}";
+        }, 1000);
     }
 </script>
+{{ end }}

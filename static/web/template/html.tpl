@@ -1,3 +1,4 @@
+{{ define "html" }}
 <html lang="zh">
 <head>
     <title>{{.Title}}</title>
@@ -8,6 +9,7 @@
     <script type='text/javascript' src='/html/assert/layui.all.js'></script>
 </head>
 <body>
-{{template .Body}}
+{{ template "content" . }}
 </body>
 </html>
+{{ end }}

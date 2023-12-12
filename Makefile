@@ -15,12 +15,13 @@ all: clean build package
 clean:
 	rm -rf $(DIST_DIR)
 
-build: build-ctl build-api build-daemon build-hooks
+build: build-ctl build-cgi build-daemon build-hooks
 
 build-ctl:
-	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/appctrl -v ./cmd
-build-api:
-	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/web/cgi/webmain -v ./cmd/cgi/api
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/appctl -v ./cmd
+build-cgi:
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/web/cgi/webmain -v ./cmd/cgi
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/web/cgi/api -v ./cmd/cgi/api
 build-daemon:
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/daemon -v ./cmd/daemon
 build-hooks:
@@ -28,6 +29,7 @@ build-hooks:
 
 package: $(TTYD_PATH)
 	cp -r ./static/* $(DIST_DIR)
+	chmod +x $(DIST_DIR)/appctrl
 	tar czvf $(PACKAGE) -C $(DIST_DIR) .
 
 $(TTYD_PATH):

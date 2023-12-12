@@ -3,7 +3,6 @@ package start
 import (
 	"context"
 	"flag"
-	"os"
 
 	"xie.sh.cn/panabit-ttyd/v2/pkg/env"
 
@@ -21,10 +20,11 @@ func (*Cmd) Usage() string { return "start" }
 func (p *Cmd) SetFlags(_ *flag.FlagSet) {}
 
 func (p *Cmd) Execute(_ context.Context, _ *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
-	if err := os.Mkdir(env.ExtensionCgiDir, 755); err != nil {
+	if err := env.CopyDir(env.ExtensionCgiStorageDir, env.ExtensionCgiDir, 755); err != nil {
 		return subcommands.ExitFailure
 	}
-	env.CopyDir(env.ExtensionCgiStorageDir, env.ExtensionCgiDir, 644)
-	env.CopyDir(env.ExtensionWebAssetsStorageDir, env.ExtensionWebAssetsDir, 644)
+	if err := env.CopyDir(env.ExtensionWebTemplatesStorageDir, env.ExtensionWebTemplatesDir, 644); err != nil {
+		return subcommands.ExitFailure
+	}
 	return subcommands.ExitSuccess
 }

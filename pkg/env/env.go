@@ -17,26 +17,27 @@ const (
 	ExtensionDir    = ExtensionHome + "/" + Name
 	ExtensionLibDir = ExtensionDir + "/lib"
 
-	ControlPanelHome      = Ramdisk + "/admin"
-	ExtensionCgiDir       = ControlPanelHome + "/cgi-bin/App/" + Name
-	ExtensionWebAssetsDir = ControlPanelHome + "/html/App/" + Name
+	ControlPanelHome         = Ramdisk + "/admin"
+	ExtensionCgiDir          = ControlPanelHome + "/cgi-bin/App/" + Name
+	ExtensionWebTemplatesDir = ExtensionCgiDir + "/template"
 )
 
 var (
-	StorageHome                  string
-	ExtensionStorageDir          string
-	ExtensionCgiStorageDir       string
-	ExtensionWebAssetsStorageDir string
+	StorageHome                     = "/usr/panabit"
+	ExtensionStorageDir             = StorageHome + "/app/" + Name
+	ExtensionCgiStorageDir          = ExtensionStorageDir + "/web/cgi"
+	ExtensionWebTemplatesStorageDir = ExtensionStorageDir + "/web/template"
 )
 
 func Init() {
-	StorageHome = "/usr/panabit"
-	if v, err := find(PanabitPathKey); err != nil && v != "" {
-		StorageHome = v
+	v, err := find(PanabitPathKey)
+	if err != nil || v == "" {
+		return
 	}
+	StorageHome = v
 	ExtensionStorageDir = StorageHome + "/app/" + Name
 	ExtensionCgiStorageDir = ExtensionStorageDir + "/web/cgi"
-	ExtensionWebAssetsStorageDir = ExtensionStorageDir + "/web/html"
+	ExtensionWebTemplatesStorageDir = ExtensionStorageDir + "/web/template"
 }
 
 func find(key string) (string, error) {
