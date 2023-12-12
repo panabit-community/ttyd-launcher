@@ -24,7 +24,7 @@ build-api:
 build-daemon:
 	$(GOBUILD) -o $(DIST_DIR)/daemon -v ./cmd/daemon
 build-hooks:
-	$(GOBUILD) -o $(DIST_DIR)/postinstall -v ./cmd/hooks/postinstall
+	$(GOBUILD) -o $(DIST_DIR)/afterinstall -v ./cmd/hooks/postinstall
 
 package: $(TTYD_PATH)
 	cp -r ./static/* $(DIST_DIR)
