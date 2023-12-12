@@ -4,12 +4,10 @@ import (
 	"os"
 	"path/filepath"
 	"text/template"
-
-	"xie.sh.cn/panabit-ttyd/v2/pkg/env"
 )
 
 const (
-	DefaultTemplatePath  = "./web/template"
+	DefaultTemplatePath  = "./template"
 	HttpTemplate         = "http.tpl"
 	HtmlTemplate         = "html.tpl"
 	PartialIndexTemplate = "index.tpl"
@@ -21,7 +19,7 @@ func main() {
 		Title          string
 		WindowLocation string
 	}{
-		Title:          env.Name,
+		Title:          "ttyd Launcher",
 		WindowLocation: loc, // TODO
 	}
 	if err := render(DefaultTemplatePath, b); err != nil {
