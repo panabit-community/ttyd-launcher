@@ -11,9 +11,11 @@ import (
 
 type Cmd struct{}
 
-func (*Cmd) Name() string     { return "start" }
+func (*Cmd) Name() string { return "start" }
+
 func (*Cmd) Synopsis() string { return "Start the extension." }
-func (*Cmd) Usage() string    { return "start" }
+
+func (*Cmd) Usage() string { return "start" }
 
 func (p *Cmd) SetFlags(_ *flag.FlagSet) {}
 

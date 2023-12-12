@@ -20,7 +20,7 @@ build: build-ctl build-api build-daemon build-hooks
 build-ctl:
 	$(GOBUILD) -o $(DIST_DIR)/appctrl -v ./cmd
 build-api:
-	$(GOBUILD) -o $(DIST_DIR)/web/cgi/api -v ./cmd/cgi/api
+	$(GOBUILD) -o $(DIST_DIR)/web/cgi/webmain -v ./cmd/cgi/api
 build-daemon:
 	$(GOBUILD) -o $(DIST_DIR)/daemon -v ./cmd/daemon
 build-hooks:
