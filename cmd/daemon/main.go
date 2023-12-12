@@ -26,7 +26,9 @@ func main() {
 				if !status {
 					Run()
 				}
-			case syscall.SIGINT, syscall.SIGTERM:
+			case syscall.SIGINT:
+				// TODO
+			case syscall.SIGTERM:
 				fmt.Printf("Received signal: %v, exiting.", s)
 				os.Exit(0)
 			}
