@@ -7,9 +7,10 @@ import (
 )
 
 const (
-	Name           = "ttyd"
-	Environment    = "/etc/PG.conf"
-	PanabitPathKey = "PGPATH"
+	Name                     = "ttyd"
+	Environment              = "/etc/PG.conf"
+	PanabitPathKey           = "PGPATH"
+	PanabitControlPanelIndex = "webmain"
 
 	Ramdisk         = "/usr/ramdisk"
 	ExtensionHome   = Ramdisk + "/app"

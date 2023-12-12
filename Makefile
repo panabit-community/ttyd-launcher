@@ -18,13 +18,13 @@ clean:
 build: build-ctl build-api build-daemon build-hooks
 
 build-ctl:
-	$(GOBUILD) -o $(DIST_DIR)/appctrl -v ./cmd
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/appctrl -v ./cmd
 build-api:
-	$(GOBUILD) -o $(DIST_DIR)/web/cgi/webmain -v ./cmd/cgi/api
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/web/cgi/webmain -v ./cmd/cgi/api
 build-daemon:
-	$(GOBUILD) -o $(DIST_DIR)/daemon -v ./cmd/daemon
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/daemon -v ./cmd/daemon
 build-hooks:
-	$(GOBUILD) -o $(DIST_DIR)/afterinstall -v ./cmd/hooks/postinstall
+	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/afterinstall -v ./cmd/hooks/postinstall
 
 package: $(TTYD_PATH)
 	cp -r ./static/* $(DIST_DIR)
