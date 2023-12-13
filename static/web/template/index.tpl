@@ -2,9 +2,7 @@
 <button onclick="clickHandler()">Launch ttyd</button>
 <script>
     function clickHandler() {
-        setTimeout(() => {
-            window.location = "{{ .WindowLocation }}";
-        }, 1000);
+        window.location.href = "/cgi-bin/App/ttyd/api";
     }
 </script>
 {{ end }}

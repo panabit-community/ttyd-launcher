@@ -1,9 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
-	"path/filepath"
-	"text/template"
+
+	"xie.sh.cn/panabit-ttyd/v2/pkg/html"
 )
 
 const (
@@ -14,30 +15,26 @@ const (
 )
 
 func main() {
-	loc := "http://192.168.0.200:7681"
-	b := struct {
-		Title          string
-		WindowLocation string
-	}{
-		Title:          "ttyd Launcher",
-		WindowLocation: loc, // TODO
-	}
-	if err := render(DefaultTemplatePath, b); err != nil {
+	if err := render(); err != nil {
 		os.Exit(1)
 	}
 }
 
-func render(path string, data any) error {
-	tpl, err := template.ParseFiles(
-		filepath.Join(path, HttpTemplate),
-		filepath.Join(path, HtmlTemplate),
-		filepath.Join(path, PartialIndexTemplate),
+func render() error {
+	d := struct {
+		Title string
+	}{
+		Title: "ttyd Launcher",
+	}
+	s, err := html.Render(
+		DefaultTemplatePath,
+		HttpTemplate,
+		d,
+		HttpTemplate, HtmlTemplate, PartialIndexTemplate,
 	)
 	if err != nil {
 		return err
 	}
-	if err := tpl.ExecuteTemplate(os.Stdout, HttpTemplate, data); err != nil {
-		return err
-	}
+	fmt.Println(s)
 	return nil
 }

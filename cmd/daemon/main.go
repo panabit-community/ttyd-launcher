@@ -43,5 +43,5 @@ func Run() {
 		mutex.Unlock()
 		status = false
 	}()
-	ttyd.Run()
+	ttyd.Start()
 }

@@ -7,7 +7,7 @@ GOCLEAN=$(GOCMD) clean
 
 DIST_DIR=./build/dist
 PACKAGE=./build/panabit-ttyd.tar.gz
-TTYD_PATH=./static/bin/ttyd
+TTYD=./static/bin/ttyd
 TTYD_URL=https://github.com/tsl0922/ttyd/releases/download/1.7.4/ttyd.aarch64
 
 all: clean build package
@@ -27,10 +27,10 @@ build-daemon:
 build-hooks:
 	GOOS=linux GOARCH=arm64 $(GOBUILD) -o $(DIST_DIR)/afterinstall -v ./cmd/hooks/postinstall
 
-package: $(TTYD_PATH)
+package: $(TTYD)
 	cp -r ./static/* $(DIST_DIR)
 	chmod +x $(DIST_DIR)/appctrl
-	tar czvf $(PACKAGE) -C $(DIST_DIR) .
+	tar -czvf $(PACKAGE) -C $(DIST_DIR) --exclude='.gitkeep' .
 
-$(TTYD_PATH):
-	wget -O $(TTYD_PATH) $(TTYD_URL)
+$(TTYD):
+	wget -O $(TTYD) $(TTYD_URL)
