@@ -14,7 +14,7 @@ const (
 )
 
 func main() {
-	loc := "https://192.168.0.200:7681"
+	loc := "http://192.168.0.200:7681"
 	b := struct {
 		Title          string
 		WindowLocation string

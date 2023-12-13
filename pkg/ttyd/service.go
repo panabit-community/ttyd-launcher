@@ -7,15 +7,15 @@ import (
 )
 
 const (
-	ttyd = env.ExtensionLibDir + "/ttyd"
+	ttyd = env.ExtensionBinaryDir + "/ttyd"
 )
 
-func Run() {
+func Run() *exec.Cmd {
 	cmd := exec.Command(ttyd, "-o")
 	if err := cmd.Start(); err != nil {
-		return
+		return nil
 	}
-	cmd.Wait()
+	return cmd
 }
 
 func Cleanup() {}

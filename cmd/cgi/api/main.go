@@ -1,6 +1,10 @@
 package main
 
-import "os"
+import (
+	"os"
+
+	"xie.sh.cn/panabit-ttyd/v2/pkg/ttyd"
+)
 
 const (
 	CgiPrefix             = "CGI_"
@@ -9,7 +13,7 @@ const (
 )
 
 func main() {
-
+	ttyd.Run() // TODO
 }
 
 func parseMethod() string {

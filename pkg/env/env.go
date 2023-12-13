@@ -12,10 +12,10 @@ const (
 	PanabitPathKey           = "PGPATH"
 	PanabitControlPanelIndex = "webmain"
 
-	Ramdisk         = "/usr/ramdisk"
-	ExtensionHome   = Ramdisk + "/app"
-	ExtensionDir    = ExtensionHome + "/" + Name
-	ExtensionLibDir = ExtensionDir + "/lib"
+	Ramdisk            = "/usr/ramdisk"
+	ExtensionHome      = Ramdisk + "/app"
+	ExtensionDir       = ExtensionHome + "/" + Name
+	ExtensionBinaryDir = ExtensionDir + "/bin"
 
 	ControlPanelHome         = Ramdisk + "/admin"
 	ExtensionCgiDir          = ControlPanelHome + "/cgi-bin/App/" + Name
