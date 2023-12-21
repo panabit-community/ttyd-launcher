@@ -16,6 +16,7 @@ const (
 	ExtensionHome      = Ramdisk + "/app"
 	ExtensionDir       = ExtensionHome + "/" + Name
 	ExtensionBinaryDir = ExtensionDir + "/bin"
+	TtydBinary         = ExtensionBinaryDir + "/ttyd"
 
 	ControlPanelHome         = Ramdisk + "/admin"
 	ExtensionCgiDir          = ControlPanelHome + "/cgi-bin/App/" + Name
